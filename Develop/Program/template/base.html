@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type='text/css' href="{% static 'base.css'%}">
+    <script src="{% static 'base.js' %}"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title> DentalCouponHub </title>
+
+    {% block extra_css %}{% endblock %}
+
+  </head>
+
+  <body>
+    <header>
+      <div id="header1">
+        <div id="left_side">Location</div>
+        <div id="right_side">
+          <div id="aid">AID</div>
+          <div id="subscribe">SUBSCRIBE!</div>
+        </div>
+      </div>
+      <div id="header2">
+        <div id="caetgory_and_logo">
+          <div id="categories_icon"><span class="material-symbols-rounded">menu</span></div>
+          <div id="logo"><a>LOGO SPACE</a></div>
+        </div>
+        <div id="search_box">
+          <select>
+            <option hidden>Categories</option>
+          </select>
+          <input placeholder="What do you find?"></input>
+          <input placeholder="Location"></input>
+          <div><span class="material-symbols-rounded">search</span></div>
+        </div>
+        <div id="ad_for_business"><p>Bussiness owner?</p><p>Click here!</p></div>
+        <div id="cart_and_user">
+          <div>
+            <span class="material-symbols-rounded">shopping_cart</span>
+            <p>Cart</p>
+          </div>
+          <div>
+            <span class="material-symbols-rounded">account_circle</span>
+            <p>User</p>
+          </div>
+        </div>
+      </div>
+      <div id="header3">
+        <div id="categories_str">CATEGORIES</div>
+        <div class="choices">
+          <div>choice1</div>
+          <div>choice2</div>
+          <div>choice3</div>
+          <div>choice4</div>
+          <div>choice5</div>
+          <div>choice6</div>
+          <div>choice7</div>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>
