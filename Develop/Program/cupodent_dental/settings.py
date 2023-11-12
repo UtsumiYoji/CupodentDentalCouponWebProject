@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # below are addtional library
+    'widget_tweaks',
+
     # below are develop apps
     'custom_user.apps.CustomUserConfig',
 ]
