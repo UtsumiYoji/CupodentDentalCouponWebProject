@@ -12,6 +12,16 @@
     <p>You already have account? <a href="">here</a> to login</p>
     <h1>Account creation</h1>  
     
+    {% if form.errors %}
+        <div class="error_msg">
+        {% for key, errors in form.errors.items %}
+            {% for error in errors %}
+                <p>{{key}} - {{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    {% endif %}
+
     {% csrf_token %}
 
     <row>
@@ -21,10 +31,14 @@
         </div>
     </row>
 
-    <row>
+    <row class="double_row">
         <div class="field">
-        <label>{{ form.password.label }}*</label>
-        {{ form.password | add_class:"input_fullwidth"}}
+        <label>{{ form.password1.label }}*</label>
+        {{ form.password1 }}
+        </div>
+        <div class="field">
+        <label>{{ form.password2.label }}*</label>
+        {{ form.password2 }}
         </div>
     </row>
 

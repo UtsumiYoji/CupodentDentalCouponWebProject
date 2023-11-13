@@ -18,10 +18,24 @@ form {
     border-radius: 6px;
 }
 
-form>p{
+form>p:first-child{
     font-size: 14px;
     text-align: right;
     margin-bottom: 5px;
+}
+
+.error_msg{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.error_msg>p{
+    margin: 3px 0;
 }
 
 form>h1{

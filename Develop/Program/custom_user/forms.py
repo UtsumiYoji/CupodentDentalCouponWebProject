@@ -1,11 +1,16 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from . import models
 
-class CustomUserForm(forms.ModelForm):
+class CustomUserForm(UserCreationForm):
     class Meta:
         model = models.CustomUsers
-        exclude = (
-            'last_login', 'is_active', 'is_staff', 'date_joined', 
-            'is_superuser', 'groups', 'user_permissions',
-            'business_account', 'company', 'username')
+        fields = (
+            'email', 'gender', 'phone_number', 
+            'address1', 'address2', 'city', 'postal_code',
+            'province', 'country', 'first_name', 'last_name'
+        )
+        
+class LoginForm(AuthenticationForm):
+    pass
