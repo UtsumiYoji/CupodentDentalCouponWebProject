@@ -1,9 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import forms as auth_forms
 
 from . import models
 
-class CustomUserForm(UserCreationForm):
+class UserCreationForm(auth_forms.UserCreationForm):
     class Meta:
         model = models.CustomUsers
         fields = (
@@ -11,6 +11,4 @@ class CustomUserForm(UserCreationForm):
             'address1', 'address2', 'city', 'postal_code',
             'province', 'country', 'first_name', 'last_name'
         )
-        
-class LoginForm(AuthenticationForm):
-    pass
+

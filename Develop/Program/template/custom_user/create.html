@@ -9,8 +9,8 @@
 <div class="wrap">
 
 <form method="post">
-    <p>You already have account? <a href="">here</a> to login</p>
-    <h1>Account creation</h1>  
+    <p>You already have account? <a href="{% url 'custom_user:login' %}">here</a> to login</p>
+    <h1>Account creation</h1>
     
     {% if form.errors %}
         <div class="error_msg">

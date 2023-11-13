@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'custom_user/create.css'%}">
+
+<div class="wrap">
+
+<form  href="{% url 'custom_user:create' %}" method="post">
+    <p>You don't have account? <a href="{% url 'custom_user:create' %}">here</a> to create</p>
+    <h1>Login</h1>
+
+    {% if form.errors %}
+        <div class="error_msg">
+        {% for key, errors in form.errors.items %}
+            {% for error in errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    {% csrf_token %}
+
+    <row>
+        <div class="field">
+        <label>{{ form.username.label }}</label>
+        {{ form.username | add_class:"input_fullwidth"}}
+        </div>
+    </row>
+
+    <row>
+        <div class="field">
+        <label>{{ form.password.label }}</label>
+        {{ form.password | add_class:"input_fullwidth"}}
+        </div>
+    </row>
+
+    <button type="submit">LOGIN</button>
+</form>
+
+</div>
+{% endblock %}
