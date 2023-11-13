@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'custom_user/create.css'%}">
+
+<div class="wrap">
+
+<form method="post">
+    <h1>Edit account</h1>
+    
+    {% if form.errors %}
+        <div class="error_msg">
+        {% for key, errors in form.errors.items %}
+            {% for error in errors %}
+                <p>{{key}} - {{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    {% csrf_token %}
+
+    <row>
+        <div class="field">
+        <label>{{ form.email.label }}*</label>
+        {{ form.email | add_class:"input_fullwidth"}}
+        </div>
+    </row>
+
+    <row class="double_row">
+        <div class="field">
+        <label>{{ form.first_name.label }}*</label>
+        {{ form.first_name }}
+        </div>
+        <div class="field">
+        <label>{{ form.last_name.label }}*</label>
+        {{ form.last_name }}
+        </div>
+    </row>
+
+    <row>
+        <div class="field">
+        <label>{{ form.gender.label }}*</label>
+        {{ form.gender }}
+        </div>
+    </row>
+
+    <row>
+        <div class="field">
+        <label>{{ form.phone_number.label }}</label>
+        {{ form.phone_number | add_class:"input_fullwidth"}}
+        </div>
+    </row>
+        
+    <row>
+        <div class="field">
+        <div><label>{{ form.address1.label }}</label> - {{ form.address1.help_text }}</div>
+        {{ form.address1 | add_class:"input_fullwidth"}}
+        </div>
+    </row>
+
+    <row>
+        <div class="field">
+        <div><label>{{ form.address2.label }}</label> - {{ form.address2.help_text }}</div>
+        {{ form.address2 | add_class:"input_fullwidth"}}
+        </div>
+    </row>
+
+    <row class="double_row">
+        <div class="field">
+        <label>{{ form.city.label }}</label>
+        {{ form.city }}
+        </div>
+        <div class="field">
+        <label>{{ form.postal_code.label }}</label>
+        {{ form.postal_code }}
+        </div>
+    </row>
+
+    <row class="double_row">
+        <div class="field">
+        <label>{{ form.province.label }}</label>
+        {{ form.province }}
+        </div>
+        <div class="field">
+        <label>{{ form.country.label }}</label>
+        {{ form.country }}
+        </div>
+    </row>
+
+    <button type="submit">UPDATE ACCOUNT</button>
+</form>
+
+</div>
+{% endblock %}

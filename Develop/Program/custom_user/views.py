@@ -50,10 +50,11 @@ class DetailView(LoginRequiredMixin, generic.DetailView):
         context['labels'] = field_labels
         return context
 
-# class OtherView(LoginRequiredMixin, generic.UpdateView):
-#     template_name = 'custom_user/update.html'
+class UpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = models.CustomUsers
+    form_class = forms.UserChangeForm
+    template_name = 'custom_user/update.html'
+    success_url = '/user/detail'
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['users'] = User.objects.exclude(username=self.request.user.username)
-#         return context
+    def get_object(self, queryset=None):
+        return self.request.user
