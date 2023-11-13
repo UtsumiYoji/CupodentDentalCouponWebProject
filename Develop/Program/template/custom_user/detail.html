@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'custom_user/detail.css'%}">
+
+<div class="wrap">
+    <div class="account_info">
+        <div class="title"><h1>Account information</h1><a href="">edit</a></div>
+        <div class="information">
+            <row>
+                <label>{{ labels.email }}</label>
+                <div>{{ user.email }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.phone_number }}</label>
+                <div>{{ user.phone_number|default:"-" }}</div>
+            </row>
+
+            <row>
+                <label>Name</label>
+                <div>{{ user.first_name }} {{ user.last_name }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.gender }}</label>
+                <div>{{ user.gender }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.address1 }}</label>
+                <div>{{ user.address1|default:"-" }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.address2 }}</label>
+                <div>{{ user.address2|default:"-" }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.city }}</label>
+                <div>{{ user.city|default:"-" }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.postal_code }}</label>
+                <div>{{ user.postal_code|default:"-" }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.province }}</label>
+                <div>{{ user.province|default:"-" }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.country }}</label>
+                <div>{{ user.country|default:"-" }}</div>
+            </row>
+        </div>
+    </div>
+</div>
+{% endblock %}
