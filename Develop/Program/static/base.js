@@ -8,4 +8,11 @@ window.addEventListener('resize', function () {
         $('body>div').css('padding', '');
         $('header>div').css('padding', '');
     }
-  })
+})
+
+$(document).ready(function() {
+    $('#active_user_dropdown').click(function(){
+        console.log("a")
+        $('.account_dropdown').slideToggle();
+    })
+});

@@ -5,12 +5,13 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type='text/css' href="{% static 'base.css'%}">
-    <script src="{% static 'base.js' %}"></script>
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="{% static 'base.js' %}"></script>
+    <link rel="stylesheet" type='text/css' href="{% static 'base.css'%}">
     <title> DentalCouponHub </title>
+
 
     {% block extra_css %}{% endblock %}
 
@@ -34,20 +35,47 @@
           <select>
             <option hidden>Categories</option>
           </select>
-          <input placeholder="What do you find?"></input>
-          <input placeholder="Location"></input>
+          <input placeholder="What do you find?" />
+          <input placeholder="Location" />
           <div><span class="material-symbols-rounded">search</span></div>
         </div>
         <div id="ad_for_business"><p>Bussiness owner?</p><p>Click here!</p></div>
         <div id="cart_and_user">
-          <div>
+          <div class="icon_and_word">
             <span class="material-symbols-rounded">shopping_cart</span>
             <p>Cart</p>
           </div>
-          <div>
+          <div class="icon_and_word" id="active_user_dropdown">
             <span class="material-symbols-rounded">account_circle</span>
             <p>User</p>
           </div>
+          {% if request.user.is_authenticated %}
+            <div class="account_dropdown" style="display: none;">
+              <a href="{% url 'custom_user:detail' %}">
+                <span class="material-symbols-rounded">person</span>
+                Your account
+              </a>
+              <a href="">
+                <span class="material-symbols-rounded">list_alt</span>
+                Your orders
+              </a>
+              <hr>
+              <a href="{% url 'custom_user:logout' %}">
+                <span class="material-symbols-rounded">logout</span>
+                Logout</a>
+            </div>
+          {% else %}
+            <div class="account_dropdown" style="display: none;">
+              <a href="{% url 'custom_user:create' %}">
+                <span class="material-symbols-rounded">person_add</span>
+                Make account
+              </a>
+              <hr>
+              <a href="{% url 'custom_user:login' %}">
+                <span class="material-symbols-rounded">login</span>
+                Login</a>
+            </div>
+          {% endif %}
         </div>
       </div>
       <div id="header3">
