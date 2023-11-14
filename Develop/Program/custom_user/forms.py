@@ -9,7 +9,7 @@ class UserCreationForm(auth_forms.UserCreationForm):
         fields = (
             'email', 'gender', 'phone_number', 
             'address1', 'address2', 'city', 'postal_code',
-            'province', 'country', 'first_name', 'last_name'
+            'province', 'country_object', 'first_name', 'last_name'
         )
 
 class UserChangeForm(auth_forms.UserChangeForm):
@@ -18,5 +18,5 @@ class UserChangeForm(auth_forms.UserChangeForm):
         fields = (
             'email', 'gender', 'phone_number', 
             'address1', 'address2', 'city', 'postal_code',
-            'province', 'country', 'first_name', 'last_name'
+            'province', 'country_object', 'first_name', 'last_name'
         )

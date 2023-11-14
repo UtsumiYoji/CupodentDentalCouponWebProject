@@ -93,12 +93,15 @@ class Companies(models.Model):
     name = models.TextField('name', null=False, blank=False)
     _phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     phone_number = models.CharField('phone number', validators=[_phone_regex], max_length=17, blank=True)
+    email = models.EmailField(_("email address"), blank=False, null=False, unique=True)
     address1 = models.TextField('adress1', help_text='Street name', null=False, blank=False)
     address2 = models.TextField('adress2', help_text='Optional, building name', null=False, blank=False)
     city = models.CharField('city', help_text='or Town', max_length=255, null=False, blank=False)
     postal_code = models.CharField('postal code', max_length=255, null=False, blank=False)
     province = models.CharField('province', max_length=255, null=False, blank=False)
-    country = models.ForeignKey(Countries, on_delete=models.SET_NULL, null=True)
+    country = models.ForeignKey(Countries, verbose_name='country', on_delete=models.SET_NULL, null=True)
+    image = models.ImageField('image', upload_to='comapanies/')
+
 
 GENDER = (('male', 'male'), ('female', 'female'), ('other', 'other'))
 class CustomUsers(AbstractBaseUser, PermissionsMixin):
@@ -112,10 +115,10 @@ class CustomUsers(AbstractBaseUser, PermissionsMixin):
     city = models.CharField('city', help_text='or Town', max_length=255, null=True, blank=True)
     postal_code = models.CharField('postal code', max_length=255, null=True, blank=True)
     province = models.CharField('province', max_length=255, null=True, blank=True)
-    country = models.ForeignKey(Countries, on_delete=models.SET_NULL, null=True, blank=True)
+    country_object = models.ForeignKey(Countries, verbose_name='country', on_delete=models.SET_NULL, null=True, blank=True)
 
     business_account = models.BooleanField('business account', default=False, null=False, blank=False)
-    company = models.ManyToManyField(Companies, blank=True)
+    company_object = models.ManyToManyField(Companies, verbose_name='campany', blank=True)
 
     first_name = models.CharField(_("first name"), max_length=150, blank=True)
     last_name = models.CharField(_("last name"), max_length=150, blank=True)
