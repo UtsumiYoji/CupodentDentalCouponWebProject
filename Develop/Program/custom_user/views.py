@@ -1,6 +1,4 @@
-from typing import Any
 from django.contrib.auth import login
-from django.contrib.auth.models import User
 from django.contrib.auth import views
 from django.db import models
 from django.views import generic
@@ -11,9 +9,6 @@ from . import models, forms
 
 
 # Create your views here.
-def index(request):
-    pass
-
 class CreateView(generic.CreateView):
     model = models.CustomUsers
     form_class = forms.UserCreationForm

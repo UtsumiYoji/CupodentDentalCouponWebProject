@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'coupon/coupon_create.css'%}">
+<div class="wrap">
+
+{{ object.coupon_name }}
+{{ object.description }}
+{{ object.started_on }}
+{{ object.finished_on }}
+{{ object.max_number_of_sales }}
+{{ object.show_sold_number }}
+
+{{ object.regular_price }}
+{{ object.current_price }}
+
+{{ object.address1 }}
+{{ object.address2 }}
+{{ object.city }}
+{{ object.postal_code }}
+{{ object.postal_code }}
+{{ object.country_object }}
+
+{{ object.custom_user_object }}
+{{ object.custom_user_object.first_name }}{{ object.custom_user_object.last_name }}
+{{ object.company_object.name }}
+
+<br>
+{{ images }}
+
+</div>
+
+{% endblock %}

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # below are develop apps
     'custom_user.apps.CustomUserConfig',
+    'coupon.apps.CouponConfig',
 ]
 
 MIDDLEWARE = [

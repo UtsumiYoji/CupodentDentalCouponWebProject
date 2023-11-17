@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'coupon/coupon_create.css'%}">
+<div class="wrap">
+
+{% for object in object_list %}
+    <p>{{ object.coupon_name }} - {{ object.company_object }} - {{ object.custom_user_object }}</p>
+    <a href="{% url 'coupon:detail' object.id %}">detail</a>
+{% empty %}
+    No coupon yet.
+{% endfor %}
+
+<br>
+{{ images }}
+
+</div>
+
+{% endblock %}

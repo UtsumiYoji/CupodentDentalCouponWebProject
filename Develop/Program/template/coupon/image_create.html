@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'coupon/coupon_create.css'%}">
+<div class="wrap">
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.management_form }}
+
+    {{ form }}
+    
+    <button type="submit">CREATE ACCOUNT</button>
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'coupon/coupon_create.css'%}">
+<div class="wrap">
+<form method="post">
+    <h1>Create coupon</h1>
+
+    {% csrf_token %}
+    <row>
+        <div class="field">
+            <label>{{ form.coupon_name.label }}*</label>
+            {{ form.coupon_name }}
+        </div>
+    </row>
+    <row>
+        <div class="field">
+            <label>{{ form.description.label }}*</label>
+            {{ form.description }}
+            <p>You can use <a href="https://www.markdownguide.org/cheat-sheet/">MarkDown</a> style</p>
+        </div>
+    </row>
+    <row>
+        <div class="field">
+            <label>{{ form.company_object.label }}*</label>
+            {{ form.company_object }}
+        </div>
+    </row>
+    <row class="double_row">
+        <div class="field">
+            <label>{{ form.started_on.label }}</label>
+            {{ form.started_on }}
+            <p>If you set a date, coupon will apper when date you set come.<p>
+            <p>If you don't set a date, coupon will apper immediately.</p>
+        </div>
+        <div class="field">
+            <label>{{ form.finished_on.label }}</label>
+            {{ form.finished_on }}
+            <p>If you set a date, coupon will disappear when date you set come.</p>
+        </div>
+    </row>
+    <row class="double_row">
+        <div class="field">
+            <label>{{ form.regular_price.label }}*</label>
+            {{ form.regular_price }}
+        </div>
+        <div class="field">
+            <label>{{ form.offer_price.label }}*</label>
+            {{ form.offer_price }}
+        </div>
+    </row>
+    <row class="double_row">
+        <div class="field">
+            <label>{{ form.max_number_of_sales.label }}</label>
+            {{ form.max_number_of_sales }}
+            <p>If your offer is limited, please set this</p>
+        </div>
+        <div class="field">
+            <label>{{ form.show_sold_number.label }}*</label>
+            {{ form.show_sold_number }}
+            <p>If you wouldn't like to show how many times this coupon was purchased, select "No"</p>
+        </div>
+    </row>
+
+    <hr>
+
+    <p>If customer has to go place to take service, please input address.</p>
+    <p>If your offer is online service or something like that, you dont need to input.</p>
+    <row>
+        <div class="field">
+            <label>{{ form.address1.label }}</label>
+            {{ form.address1 }}
+        </div>
+    </row>
+    <row>
+        <div class="field">
+            <label>{{ form.address2.label }}</label>
+            {{ form.address2 }}
+        </div>
+    </row>
+    <row class="double_row">
+        <div class="field">
+            <label>{{ form.city.label }}</label>
+            {{ form.city }}
+        </div>
+        <div class="field">
+            <label>{{ form.postal_code.label }}</label>
+            {{ form.postal_code }}
+        </div>
+    </row>
+    <row class="double_row">
+        <div class="field">
+            <label>{{ form.province.label }}</label>
+            {{ form.province }}
+        </div>
+        <div class="field">
+            <label>{{ form.country_object.label }}</label>
+            {{ form.country_object }}
+        </div>
+    </row>
+    <button type="submit">MOVE TO IMAGE SELECT</button>
+</form>
+</div>
+
+{% endblock %}
