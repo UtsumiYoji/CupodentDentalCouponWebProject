@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth import forms as auth_forms
 
 from . import models
@@ -19,3 +20,8 @@ class UserChangeForm(auth_forms.UserChangeForm):
             'address1', 'address2', 'city', 'postal_code',
             'province', 'country_object', 'first_name', 'last_name'
         )
+
+class CompanyCreateForm(forms.ModelForm):
+    class Meta:
+        model = models.Companies
+        exclude = ('approved', )

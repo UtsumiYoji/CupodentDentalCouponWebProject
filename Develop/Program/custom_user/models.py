@@ -90,7 +90,7 @@ class Companies(models.Model):
         db_table = 'companies'
         verbose_name_plural = 'companies'
         
-    name = models.CharField('name', max_length=255, null=False, blank=False)
+    name = models.CharField('company name', max_length=255, null=False, blank=False)
     _phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     phone_number = models.CharField('phone number', validators=[_phone_regex], max_length=17, blank=False, null=False)
     email = models.EmailField(_("email address"), blank=False, null=False)
@@ -99,8 +99,9 @@ class Companies(models.Model):
     city = models.CharField('city', help_text='or Town', max_length=255, null=False, blank=False)
     postal_code = models.CharField('postal code', max_length=255, null=False, blank=False)
     province = models.CharField('province', max_length=255, null=False, blank=False)
-    country = models.ForeignKey(Countries, verbose_name='country', on_delete=models.SET_NULL, null=True)
-    image = models.ImageField('image', upload_to='comapanies/', null=True, blank=True)
+    country_object = models.ForeignKey(Countries, verbose_name='country', on_delete=models.SET_NULL, null=True)
+    image = models.ImageField('comapny logo', upload_to='comapanies/', null=True, blank=True)
+    approved = models.BooleanField('approved', default=False, null=False, blank=False)
 
     def __str__(self) -> str:
         return self.name
@@ -119,11 +120,10 @@ class CustomUsers(AbstractBaseUser, PermissionsMixin):
     province = models.CharField('province', max_length=255, null=True, blank=True)
     country_object = models.ForeignKey(Countries, verbose_name='country', on_delete=models.SET_NULL, null=True, blank=True)
 
-    business_account = models.BooleanField('business account', default=False, null=False, blank=False)
-    company_object = models.ManyToManyField(Companies, verbose_name='campany', blank=True)
+    company_object = models.ManyToManyField(Companies, verbose_name='campany', blank=True, null=True)
 
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
+    first_name = models.CharField(_("first name"), max_length=150, blank=False, null=False)
+    last_name = models.CharField(_("last name"), max_length=150, blank=False, null=False)
     is_staff = models.BooleanField(
         _("staff status"),
         default=False,

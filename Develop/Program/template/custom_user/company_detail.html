@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'custom_user/company_detail.css'%}">
+
+<div class="wrap">
+    <div class="account_info">
+        <div class="title"><h1>Company information</h1><a href="{% url 'custom_user:update' %}">edit</a></div>
+        <div class="information">
+            <row>
+                <label>Name</label>
+                <div>{{ object.name }}</div>
+            </row>
+            
+            <row>
+                <label>{{ labels.email }}</label>
+                <div>{{ object.email }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.phone_number }}</label>
+                <div>{{ object.phone_number }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.address1 }}</label>
+                <div>{{ object.address1 }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.address2 }}</label>
+                <div>{{ object.address2|default:"-" }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.city }}</label>
+                <div>{{ object.city }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.postal_code }}</label>
+                <div>{{ object.postal_code }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.province }}</label>
+                <div>{{ object.province }}</div>
+            </row>
+
+            <row>
+                <label>{{ labels.country_object }}</label>
+                <div>{{ object.country_object }}</div>
+            </row>
+        </div>
+    </div>
+    <div class="member_info">
+        <div class="title"><h1>Company members</h1><a href="{% url 'custom_user:update' %}">edit</a></div>
+        <div class="information">
+            {% for member in members %}
+                <row>{{ member.first_name }}{{ member.last_name }} - {{ member.email }}</row>
+            {% empty %}
+                No member
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
