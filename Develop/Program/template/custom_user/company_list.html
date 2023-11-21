@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'custom_user/company_list.css'%}">
+
+<div class="wrap">
+    <div class="member_info">
+        <div class="title"><h1>Company you belong</h1></div>
+        <div class="information">
+            {% for object in object_list %}
+                <row class="object_row">
+                    {{ object.name }} -&nbsp;<a href="{% url 'custom_user:company_detail' object.id %}">detail</a>
+                </row>
+            {% endfor %}
+            <row>
+                Do you want to regist another comapny? Click&nbsp;<a href="{% url 'custom_user:company_create' %}">here</a>
+            </row>
+        </div>
+    </div>
+</div>
+{% endblock %}

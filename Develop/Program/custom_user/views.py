@@ -45,9 +45,8 @@ class UserDetailView(LoginRequiredMixin, generic.DetailView):
         field_labels = {}
         for field in self.model._meta.fields:
             field_labels[field.name] = field.verbose_name.capitalize()
-        
-        # insert data
         context['labels'] = field_labels
+
         return context
 
 class UserUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -73,11 +72,12 @@ class CompanyCreateView(LoginRequiredMixin, generic.CreateView):
 
 class CompanyListView(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
     model = models.Companies
-    template_name = ''
+    template_name = 'custom_user/company_list.html'
 
     def test_func(self) -> bool | None:
         if not len(self.request.user.company_object.all()):
             return False
+        return True
         
     def handle_no_permission(self) -> HttpResponseRedirect:
         if not self.request.user.is_authenticated:
@@ -86,7 +86,7 @@ class CompanyListView(LoginRequiredMixin, UserPassesTestMixin, generic.ListView)
         return redirect('/')
 
     def get_queryset(self) -> QuerySet[Any]:
-        self.request.user.company_object.all()
+        return self.request.user.company_object.all()
 
 class CompanyDetailView(LoginRequiredMixin, UserPassesTestMixin, generic.DetailView):
     model = models.Companies

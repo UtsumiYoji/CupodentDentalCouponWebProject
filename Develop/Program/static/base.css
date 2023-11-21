@@ -139,9 +139,17 @@ header>div {
 
     text-align: center;
     line-height: 30px;
+    cursor: pointer;
 }
 
-#ad_for_business>p{
+
+#ad_for_business>a {
+    text-decoration: none;
+    color: white;
+}
+
+
+#ad_for_business>a>p{
     white-space: nowrap;
     margin: 0;
     height: 15px;
