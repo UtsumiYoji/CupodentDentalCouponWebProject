@@ -100,7 +100,7 @@ class Companies(models.Model):
     postal_code = models.CharField('postal code', max_length=255, null=False, blank=False)
     province = models.CharField('province', max_length=255, null=False, blank=False)
     country_object = models.ForeignKey(Countries, verbose_name='country', on_delete=models.SET_NULL, null=True)
-    image = models.ImageField('comapny logo', upload_to='comapanies/', null=True, blank=True)
+    image = models.ImageField('comapny logo', upload_to='comapanies/', null=False, blank=False)
     approved = models.BooleanField('approved', default=False, null=False, blank=False)
 
     def __str__(self) -> str:
@@ -120,7 +120,7 @@ class CustomUsers(AbstractBaseUser, PermissionsMixin):
     province = models.CharField('province', max_length=255, null=True, blank=True)
     country_object = models.ForeignKey(Countries, verbose_name='country', on_delete=models.SET_NULL, null=True, blank=True)
 
-    company_object = models.ManyToManyField(Companies, verbose_name='campany', blank=True, null=True)
+    company_object = models.ManyToManyField(Companies, verbose_name='campany', blank=True)
 
     first_name = models.CharField(_("first name"), max_length=150, blank=False, null=False)
     last_name = models.CharField(_("last name"), max_length=150, blank=False, null=False)

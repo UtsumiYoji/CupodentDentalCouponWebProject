@@ -41,7 +41,6 @@ class CouponImageCreateView(generic.CreateView):
 class CouponListView(generic.ListView):
     model = models.Coupons
     template_name = 'coupon/list.html'
-    paginate_by = 100
 
 class CouponDetailView(generic.DetailView):
     model = models.Coupons
