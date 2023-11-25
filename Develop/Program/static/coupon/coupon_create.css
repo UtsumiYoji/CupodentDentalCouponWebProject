@@ -50,6 +50,17 @@ form>hr{
     border-radius: 4px;
 }
 
+.field>textarea{
+    height: 120px;
+    padding: 20px 20px;
+    font-size: 14px;
+    resize: vertical;
+
+    border: 1px solid #6E6E6E;
+    box-shadow: 0px 3px 3px rgba(178,178,178,0.0988309);
+    border-radius: 4px;
+}
+
 .field>select{
     height: 42px;
     padding: 0 20px;

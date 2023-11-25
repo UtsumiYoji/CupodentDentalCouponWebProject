@@ -4,14 +4,19 @@
 {% load widget_tweaks %}
 {% load static %}
 
-<link rel="stylesheet" type='text/css' href="{% static 'coupon/coupon_create.css'%}">
+<script src="{% static 'coupon/image_create.js' %}"></script>
+<link rel="stylesheet" type='text/css' href="{% static 'coupon/image_create.css'%}">
+
 <div class="wrap">
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
-    {{ form.management_form }}
+    <div id="image-container"></div>
 
-    {{ form }}
+    <div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" onclick="clickInput()">
+        <p>ドラッグ＆ドロップまたはクリックしてファイルを選択</p>
+        <input type="file" id="file-input" accept="image/*" name="images" size="10000000" max="10" onchange="handleFiles(this.files)">
+    </div>
     
     <button type="submit">CREATE ACCOUNT</button>
 </form>

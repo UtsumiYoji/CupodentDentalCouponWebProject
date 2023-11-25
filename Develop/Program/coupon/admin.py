@@ -6,3 +6,4 @@ from . import models
 admin.site.register(models.Coupons)
 admin.site.register(models.CouponImages)
 admin.site.register(models.CouponReviews)
+admin.site.register(models.Tags)

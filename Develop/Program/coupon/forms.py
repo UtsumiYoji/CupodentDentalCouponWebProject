@@ -20,9 +20,7 @@ class CouponCreateForm(forms.ModelForm):
             'show_sold_number': forms.Select(choices=TRUE_FALSE_CHOICES),
         }
 
-coupon_image_forms = forms.inlineformset_factory(
-    parent_model=models.Coupons,
-    model=models.CouponImages,
-    fields=('image', ),
-    extra=10,
-)
+class CouponImageCreateForm(forms.ModelForm):
+    class Meta:
+        model = models.CouponImages
+        fields = '__all__'

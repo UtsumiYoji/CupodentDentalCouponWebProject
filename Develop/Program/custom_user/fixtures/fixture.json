@@ -1,0 +1,42 @@
+[
+    {
+        "model": "custom_user.countries",
+        "pk": 1,
+        "fields": {
+            "name": "Canada"
+        }
+    },
+    {
+        "model": "custom_user.countries",
+        "pk": 2,
+        "fields": {
+            "name": "America"
+        }
+    },
+    {
+        "model": "custom_user.customusers",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$qGAIo7NZ8QEPe2YQQ4bCL8$/3b7T434pSlfUSzMxFKlrKraSgONrjI52qEnp3E9vT0=",
+            "last_login": "2023-11-24T05:33:35Z",
+            "is_superuser": true,
+            "email": "admin@test.com",
+            "gender": "other",
+            "phone_number": null,
+            "address1": null,
+            "address2": null,
+            "city": null,
+            "postal_code": null,
+            "province": null,
+            "country_object": null,
+            "first_name": "Admin",
+            "last_name": "Strator",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2023-11-24T05:33:01Z",
+            "groups": [],
+            "user_permissions": [],
+            "company_object": []
+        }
+    }
+]

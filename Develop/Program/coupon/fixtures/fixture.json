@@ -1,0 +1,107 @@
+[
+    {
+        "model": "coupon.tags",
+        "pk": 1,
+        "fields": {
+            "tag": "Panoramic Radiography"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 2,
+        "fields": {
+            "tag": "Teeth Whitening"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 3,
+        "fields": {
+            "tag": "CT Scans (Computed Tomography)"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 4,
+        "fields": {
+            "tag": "Dental Implants"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 5,
+        "fields": {
+            "tag": "Orthodontics"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 6,
+        "fields": {
+            "tag": "Endodontics"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 7,
+        "fields": {
+            "tag": "Prosthodontics"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 8,
+        "fields": {
+            "tag": "Periodontics"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 9,
+        "fields": {
+            "tag": "Pediatric Dentistry"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 10,
+        "fields": {
+            "tag": "Oral and Maxillofacial Surgery"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 11,
+        "fields": {
+            "tag": "Cosmetic Dentistry"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 12,
+        "fields": {
+            "tag": "Dental Hygiene"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 13,
+        "fields": {
+            "tag": "Oral Pathology"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 14,
+        "fields": {
+            "tag": "Emergency Dentistry"
+        }
+    },
+    {
+        "model": "coupon.tags",
+        "pk": 15,
+        "fields": {
+            "tag": "Geriatric Dentistry"
+        }
+    }
+]

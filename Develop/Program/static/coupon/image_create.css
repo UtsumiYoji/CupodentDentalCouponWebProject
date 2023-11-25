@@ -1,0 +1,30 @@
+#drop-area{
+    background-color: aqua;
+}
+
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+  }
+
+
+  .image-preview {
+    /* position: relative; */
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: 20px;
+    /* display: block; */
+  }
+
+  
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}

@@ -16,6 +16,8 @@ header {
     font-family: 'Lato', Arial;
     font-size: 11px;
     font-weight: 700;
+
+    z-index: 100;
 }
 
 body>div{

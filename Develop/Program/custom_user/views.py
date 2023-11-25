@@ -1,6 +1,7 @@
 from typing import Any
 from django.contrib.auth import login
 from django.contrib.auth import views
+from django.urls import reverse
 from django.db import models
 from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
@@ -62,13 +63,15 @@ class CompanyCreateView(LoginRequiredMixin, generic.CreateView):
     model = models.Companies
     form_class = forms.CompanyCreateForm
     template_name = 'custom_user/company_create.html'
-    success_url = '/user/company/detail'
 
     def form_valid(self, form: BaseModelForm) -> HttpResponse:
         ret = super().form_valid(form)
         self.request.user.company_object.add(self.object)
         self.request.user.save()
         return ret
+    
+    def get_success_url(self) -> str:
+        return reverse('custom_user:company_detail', args=[self.object.pk])
 
 class CompanyListView(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
     model = models.Companies
