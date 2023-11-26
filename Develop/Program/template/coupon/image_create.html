@@ -4,6 +4,8 @@
 {% load widget_tweaks %}
 {% load static %}
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 <script src="{% static 'coupon/image_create.js' %}"></script>
 <link rel="stylesheet" type='text/css' href="{% static 'coupon/image_create.css'%}">
 
@@ -14,11 +16,13 @@
     <div id="image-container"></div>
 
     <div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" onclick="clickInput()">
-        <p>ドラッグ＆ドロップまたはクリックしてファイルを選択</p>
-        <input type="file" id="file-input" accept="image/*" name="images" size="10000000" max="10" onchange="handleFiles(this.files)">
+        <p>Please drag and drop image file here.</p>
+        <p>You can upload 10 files, each file has to be under 10MB.</p>
+        <p>Or click here to upload by file explorer.</p>
+        <input type="file" multiple required id="file-input" accept="image/*" name="images" size="10000000" max="10" onchange="validateAndDisplayImages(this)">
     </div>
     
-    <button type="submit">CREATE ACCOUNT</button>
+    <button type="submit">CREATE COUPON</button>
 </form>
 </div>
 

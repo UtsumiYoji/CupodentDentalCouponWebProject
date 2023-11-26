@@ -3,12 +3,10 @@ function dropHandler(event) {
 
     if (event.dataTransfer.items) {
         var fileInput = document.getElementById('file-input');
-
-        // ドロップされたファイルと既存のファイルを合算
         var totalFiles = fileInput.files.length + event.dataTransfer.items.length;
 
         if (totalFiles > 10) {
-            alert('最大で10個のファイルしか選択できません。');
+            alert('You can only upload 10 files.');
             return;
         }
 
@@ -16,8 +14,8 @@ function dropHandler(event) {
             if (event.dataTransfer.items[i].kind === 'file') {
                 var file = event.dataTransfer.items[i].getAsFile();
 
-                // ファイルのバリデーションと画像表示を一緒に行う
-                validateAndDisplayImage(file);
+                // Validate and display images
+                validateAndDisplayImages(file);
             }
         }
     }
@@ -31,15 +29,29 @@ function clickInput() {
     document.getElementById('file-input').click();
 }
 
-function validateAndDisplayImage(file) {
-    // ここでファイルのバリデーションを実施
-    if (file.type.startsWith('image/')) {
-        // 画像を表示
-        updateInput(file);
-        displayImage(file);
+function validateAndDisplayImages(input) {
+    var files;
+
+    if (input instanceof FileList) {
+        files = input;
+    } else if (input instanceof File) {
+        files = [input];
+    } else if (input.files instanceof FileList) {
+        files = input.files;
     } else {
-        alert('選択されたファイルは画像ではありません。');
-        // 画像でない場合の処理を追加
+        console.error('This is an unknown file type.');
+        return;
+    }
+
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        if (file instanceof File && file.type && file.type.startsWith('image/')) {
+            displayImage(file);
+            updateInput(file);
+        } else {
+            alert('The selected file is not an image.');
+            // Add handling for non-image files if needed
+        }
     }
 }
 
@@ -51,13 +63,12 @@ function displayImage(file) {
 
     var img = document.createElement('img');
     img.src = URL.createObjectURL(file);
-    img.alt = 'Image Preview';
 
     var deleteButton = document.createElement('span');
-    deleteButton.className = 'delete-button';
-    deleteButton.innerHTML = '×';
+    deleteButton.className = 'material-symbols-outlined';
+    deleteButton.innerHTML = 'cancel';
     deleteButton.onclick = function () {
-        // 削除ボタンがクリックされたらプレビューと input から削除
+        // Remove the preview and the file from the input when the delete button is clicked
         imgWrapper.remove();
         removeImageFromInput(file);
     };
@@ -70,17 +81,14 @@ function displayImage(file) {
 function updateInput(file) {
     var fileInput = document.getElementById('file-input');
 
-    // ファイルリストを取得する前に確認し、存在しない場合は空の配列を代入
     var fileList = fileInput.files || [];
 
-    // FileList は読み取り専用なので、DataTransferオブジェクトを使って更新
     var dataTransfer = new DataTransfer();
     for (var i = 0; i < fileList.length; i++) {
         dataTransfer.items.add(fileList[i]);
     }
     dataTransfer.items.add(file);
 
-    // input 要素に新しい fileList をセット
     fileInput.files = dataTransfer.files;
 }
 
