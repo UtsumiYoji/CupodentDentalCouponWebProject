@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="stylesheet" type='text/css' href="{% static 'coupon/coupon_detail.css'%}">
+<script src="{% static 'coupon/detail.js' %}"></script>
 
 <div class="wrap">
     <div id="line1">
@@ -18,8 +19,16 @@
 
     <div id="line2">
         <div>
-            <div></div>
-            <div></div>
+            <div id="image_list">
+                {% for image in images %}
+                    <div>
+                        <img src="{{ image.image.url }}">
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="iamge_preview">
+                <img src="{{ images.0.image.url }}">
+            </div>
         </div>
         <div>
             <div>
@@ -106,7 +115,6 @@
         </div>
     </div>
 <br>
-{{ images }}
 
 </div>
 
