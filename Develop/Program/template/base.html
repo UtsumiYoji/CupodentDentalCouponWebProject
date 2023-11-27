@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 
     <script src="{% static 'base.js' %}"></script>
     <link rel="stylesheet" type='text/css' href="{% static 'base.css'%}">
@@ -25,7 +26,7 @@
         </div>
       </div>
       <div id="header2">
-        <div id="caetgory_and_logo">
+        <div class="have-urls" id="caetgory_and_logo" href="{% url 'coupon:list' %}">
           <div id="categories_icon"><span class="material-symbols-rounded">menu</span></div>
           <div id="logo"><a>LOGO SPACE</a></div>
         </div>
@@ -47,9 +48,10 @@
           </a></div>
         {% endif %}
         <div id="cart_and_user">
-          <div class="icon_and_word">
+          <div class="icon_and_word have-urls" href="{% url 'coupon:cart' %}">
             <span class="material-symbols-rounded">shopping_cart</span>
             <p>Cart</p>
+            <badge>0</badge>
           </div>
           <div class="icon_and_word" id="active_user_dropdown">
             <span class="material-symbols-rounded">account_circle</span>

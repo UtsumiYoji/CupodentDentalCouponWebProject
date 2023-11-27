@@ -1,5 +1,9 @@
 from typing import Any
+from urllib.parse import unquote
+import json
+
 from django.db import models
+from django.db.models.query import QuerySet
 from django.urls import reverse
 from django.forms.models import BaseModelForm
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
@@ -44,7 +48,6 @@ class CouponImageCreateView(LoginRequiredMixin, UserPassesTestMixin, generic.Det
     template_name = 'coupon/image_create.html'
 
     def test_func(self) -> bool | None:
-        self.request.session['coupon_id'] = 1
         if not self.request.session.get('coupon_id', False):
             return False
         return True
@@ -95,3 +98,33 @@ class CouponDetailView(generic.DetailView):
         context['labels'] = field_labels
 
         return context
+    
+class CartListView(generic.ListView):
+    model = models.Coupons
+    template_name = 'coupon/cart.html'
+
+    def get_queryset(self) -> QuerySet[Any]:
+        cart = self.request.COOKIES.get('cart')
+        if not cart:
+            return None
+        
+        cart = json.loads(unquote(cart))
+        result = list()
+        for k, v in cart.items():
+            coupon = models.Coupons.objects.get(pk=int(k))
+            image = models.CouponImages.objects.filter(coupon_object=coupon).first()
+            result.append([coupon, image, int(v)])
+        
+        return result
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)    
+
+        ctx['total_quantity'] = 0
+        ctx['total_price'] = 0
+
+        for object in ctx['object_list']:
+            ctx['total_quantity'] += object[2]
+            ctx['total_price'] += (object[2] * object[0].offer_price)
+
+        return ctx

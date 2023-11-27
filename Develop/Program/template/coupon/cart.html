@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'coupon/cart.css'%}">
+<script src="{% static 'coupon/cart.js' %}"></script>
+
+<div class="wrap">
+  <div>
+    <div id="orders">
+      <h1>Shopping Cart</h1>
+      <hr>
+      {% for object in object_list %}
+      <div class="item">
+        <div class="item_left_side">
+          <div><img src="{{ object.1.image.url }}"></div>
+          <div class="coupon_info">
+            <div>
+              <h2>{{ object.0.coupon_name }}</h2>
+              <p>Sold by <a href="">{{ object.0.company_object.name }}</a></p>
+            </div>
+            <div>
+              <div class="quantity">
+                <span>Quantity</span>
+                <select name="number" product_id="{{ object.0.id }}">
+                  {% with ''|center:30 as range %}
+                  {% for _ in range %}
+                  <option value="{{ forloop.counter }}" {% if forloop.counter == object.2 %}selected{% endif %}>{{forloop.counter }}</option>
+                  {% endfor %}
+                  {% endwith %}
+                </select>
+              </div>
+              <span product_id="{{ object.0.id }}">Delete</span>
+            </div>
+          </div>
+        </div>
+        <div class="item_right_side">
+          <h3>${{ object.0.offer_price }}</h3>
+          <span>${{ object.0.regular_price }}</span>
+        </div>
+      </div>
+      <hr>
+      {% empty %}
+      There is nothing in your cart.
+      {% endfor %}
+    </div>
+    <div id="total_status">
+        <span>Subtotal ({{total_quantity}} item):</span>
+        <span>${{total_price}}</span>
+        <button>Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

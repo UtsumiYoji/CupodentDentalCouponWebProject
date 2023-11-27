@@ -121,4 +121,4 @@ class CompanyDetailView(LoginRequiredMixin, UserPassesTestMixin, generic.DetailV
         context['members'] = self.object.customusers_set.all()
 
         return context
-    
+

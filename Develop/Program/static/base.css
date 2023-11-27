@@ -72,6 +72,7 @@ header>div {
 #header2>#caetgory_and_logo{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 #categories_icon{
@@ -165,6 +166,7 @@ header>div {
 }
 
 .icon_and_word{
+    position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -181,6 +183,26 @@ header>div {
     text-align: center;
     margin: 0;
     font-size: 14px;
+}
+
+.icon_and_word>badge{
+    display: none;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+
+    width: 20px;
+    height: 20px;
+    
+    border-radius: 50%;
+    background-color:indianred;
+
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px;
 }
 
 .account_dropdown{

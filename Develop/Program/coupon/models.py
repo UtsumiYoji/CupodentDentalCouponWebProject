@@ -35,8 +35,8 @@ class Coupons(models.Model):
     show_sold_number = models.BooleanField(verbose_name='show sold number', default=True, help_text='If turn on this, User can see how many coupon sold.')
     show_max_number_of_sales = models.BooleanField(verbose_name='show max number of sales', default=True, help_text='If turn on this, User can see how many coupon you are selling.')
 
-    regular_price = models.PositiveIntegerField('regular price')
-    offer_price = models.PositiveIntegerField('offer price')
+    regular_price = models.DecimalField('regular price', max_digits=100, decimal_places=2, validators=[MinValueValidator(0)])
+    offer_price = models.DecimalField('offer price', max_digits=100, decimal_places=2, validators=[MinValueValidator(0)])
 
     address1 = models.CharField('adress1', help_text='Street name', max_length=255, null=True, blank=True)
     address2 = models.CharField('adress2', help_text='(Optional) building name', max_length=255, null=True, blank=True)
