@@ -52,18 +52,27 @@
             {{ form.offer_price }}
         </div>
     </row>
-    <row class="double_row">
+    <row>
         <div class="field">
             <label>{{ form.max_number_of_sales.label }}</label>
             {{ form.max_number_of_sales }}
             <p>If your offer is limited, please set this</p>
         </div>
+    </row>
+    <row class="double_row">
+        <div class="field">
+            <label>{{ form.show_max_number_of_sales.label }}</label>
+            {{ form.show_max_number_of_sales }}
+            <p>If you wouldn't like to show max number of sales, select "No"</p>
+        </div>
         <div class="field">
             <label>{{ form.show_sold_number.label }}*</label>
             {{ form.show_sold_number }}
-            <p>If you wouldn't like to show how many times this coupon was purchased, select "No"</p>
+            <p>If you wouldn't like to show how many purchased, select "No"</p>
         </div>
     </row>
+
+    {{ form.tag_object }}
 
     <hr>
 

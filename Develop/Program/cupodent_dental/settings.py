@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django_extensions',
 
     # below are develop apps
+    'common.apps.CommonConfig',
     'custom_user.apps.CustomUserConfig',
+    'company.apps.CompanyConfig',
     'coupon.apps.CouponConfig',
 ]
 

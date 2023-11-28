@@ -39,11 +39,11 @@
           <div><span class="material-symbols-rounded">search</span></div>
         </div>
         {% if request.user.company_object.all|length > 0 %}
-          <div id="ad_for_business"><a href="{% url 'custom_user:company_list' %}">
+          <div id="ad_for_business"><a href="{% url 'company:list' %}">
             <p>You belong to comapny</p><p>Click to bussiness page!</p>
           </a></div>  
         {% else %}
-          <div id="ad_for_business"><a href="{% url 'custom_user:company_create' %}">
+          <div id="ad_for_business"><a href="{% url 'company:create' %}">
             <p>Bussiness owner?</p><p>Click here!</p>
           </a></div>
         {% endif %}

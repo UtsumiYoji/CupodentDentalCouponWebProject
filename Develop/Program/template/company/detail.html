@@ -4,11 +4,11 @@
 {% load widget_tweaks %}
 {% load static %}
 
-<link rel="stylesheet" type='text/css' href="{% static 'custom_user/company_detail.css'%}">
+<link rel="stylesheet" type='text/css' href="{% static 'company/detail.css'%}">
 
 <div class="wrap">
     <div class="account_info">
-        <div class="title"><h1>Company information</h1><a href="{% url 'custom_user:update' %}">edit</a></div>
+        <div class="title"><h1>Company information</h1><a href="">edit</a></div>
         <div class="information">
             <row>
                 <label>Name</label>
@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="member_info">
-        <div class="title"><h1>Company members</h1><a href="{% url 'custom_user:update' %}">edit</a></div>
+        <div class="title"><h1>Company members</h1><a href="">edit</a></div>
         <div class="information">
             {% for member in members %}
                 <row>{{ member.first_name }}{{ member.last_name }} - {{ member.email }}</row>

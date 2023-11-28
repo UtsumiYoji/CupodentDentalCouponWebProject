@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 from custom_user import models as customer_user_models
+from company import models as company_models
 
 
 class Tags(models.Model):
@@ -23,7 +24,7 @@ class Coupons(models.Model):
 
     # related fields
     custom_user_object = models.ForeignKey(customer_user_models.CustomUsers, on_delete=models.PROTECT)
-    company_object = models.ForeignKey(customer_user_models.Companies, verbose_name='company', on_delete=models.PROTECT, null=False, blank=False)
+    company_object = models.ForeignKey(company_models.Companies, verbose_name='company', on_delete=models.PROTECT, null=False, blank=False)
     tag_object = models.ManyToManyField(Tags, verbose_name='tag', blank=True)
 
     # normal fields

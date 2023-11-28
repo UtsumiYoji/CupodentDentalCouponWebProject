@@ -1,0 +1,16 @@
+[
+    {
+        "model": "common.countries",
+        "pk": 1,
+        "fields": {
+            "name": "Canada"
+        }
+    },
+    {
+        "model": "common.countries",
+        "pk": 2,
+        "fields": {
+            "name": "America"
+        }
+    }
+]

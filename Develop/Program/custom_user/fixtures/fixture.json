@@ -1,19 +1,5 @@
 [
     {
-        "model": "custom_user.countries",
-        "pk": 1,
-        "fields": {
-            "name": "Canada"
-        }
-    },
-    {
-        "model": "custom_user.countries",
-        "pk": 2,
-        "fields": {
-            "name": "America"
-        }
-    },
-    {
         "model": "custom_user.customusers",
         "pk": 1,
         "fields": {
